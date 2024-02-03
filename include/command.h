@@ -21,7 +21,7 @@ namespace Commands {
             memcpy(input_buffer, src, len);
             input_buffer[len] = '\0';
 
-            #if LOG_LEVEL >= 2
+            #if LOVENSE_LOG_LEVEL >= 2
                 Serial.print("Received command: ");
                 Serial.println(input_buffer);
             #endif

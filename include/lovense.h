@@ -111,7 +111,7 @@ namespace Lovense
 
             Command cmd = Command(characteristic);
 
-#if LOG_LEVEL >= 3
+#if LOVENSE_LOG_LEVEL >= 3
             Serial.print("Command kind: ");
             Serial.println(command_kind_to_s(cmd.kind));
             Serial.print("Arguments: ");
@@ -201,40 +201,38 @@ namespace Lovense
                 strcat(output, "OK");
                 break;
             }
-            // case GetALight:
-            // {
-            //     strcat(output, "Alight:");
-            //     strcat(output, itoa(handler->GetALight(), scratch_buffer, 10));
-            //     break;
-            // }
-            // case ALight:
-            // {
-            //     handler->SetLight(on_off_to_bool(cmd.arg(0)));
-            //     strcat(output, "OK");
-            //     break;
-            // }
-            // case GetLevel:
-            // {
-            //     PresetLevels levels = handler->GetLevels();
-            //     strcat(output, itoa(levels.low, scratch_buffer, 10));
-            //     strcat(output, ",");
-            //     strcat(output, itoa(levels.med, scratch_buffer, 10));
-            //     strcat(output, ",");
-            //     strcat(output, itoa(levels.high, scratch_buffer, 10));
-            //     break;
-            // }
-            // case SetLevel:
-            // {
-            //     handler->SetLevel(atoi(cmd.arg(0)), atoi(cmd.arg(1)));
-            //     strcat(output, "OK");
-            //     break;
-            // }
+            case GetALight:
+            {
+                strcat(output, "Alight:");
+                strcat(output, itoa(handler->GetALight(), scratch_buffer, 10));
+                break;
             }
-            Serial.println("mnyyy");
+            case ALight:
+            {
+                handler->SetLight(on_off_to_bool(cmd.arg(0)));
+                strcat(output, "OK");
+                break;
+            }
+            case GetLevel:
+            {
+                PresetLevels levels = handler->GetLevels();
+                strcat(output, itoa(levels.low, scratch_buffer, 10));
+                strcat(output, ",");
+                strcat(output, itoa(levels.med, scratch_buffer, 10));
+                strcat(output, ",");
+                strcat(output, itoa(levels.high, scratch_buffer, 10));
+                break;
+            }
+            case SetLevel:
+            {
+                handler->SetLevel(atoi(cmd.arg(0)), atoi(cmd.arg(1)));
+                strcat(output, "OK");
+                break;
+            }
+            }
 
             strcat(output, ";");
-            Serial.println("MIU");
-#if LOG_LEVEL >= 2
+#if LOVENSE_LOG_LEVEL >= 2
             Serial.print("Sending back: ");
             Serial.println(output);
 #endif
