@@ -201,34 +201,34 @@ namespace Lovense
                 strcat(output, "OK");
                 break;
             }
-            case GetALight:
-            {
-                strcat(output, "Alight:");
-                strcat(output, itoa(handler->GetALight(), scratch_buffer, 10));
-                break;
-            }
-            case ALight:
-            {
-                handler->SetLight(on_off_to_bool(cmd.arg(0)));
-                strcat(output, "OK");
-                break;
-            }
-            case GetLevel:
-            {
-                PresetLevels levels = handler->GetLevels();
-                strcat(output, itoa(levels.low, scratch_buffer, 10));
-                strcat(output, ",");
-                strcat(output, itoa(levels.med, scratch_buffer, 10));
-                strcat(output, ",");
-                strcat(output, itoa(levels.high, scratch_buffer, 10));
-                break;
-            }
-            case SetLevel:
-            {
-                handler->SetLevel(atoi(cmd.arg(0)), atoi(cmd.arg(1)));
-                strcat(output, "OK");
-                break;
-            }
+            // case GetALight:
+            // {
+            //     strcat(output, "Alight:");
+            //     strcat(output, itoa(handler->GetALight(), scratch_buffer, 10));
+            //     break;
+            // }
+            // case ALight:
+            // {
+            //     handler->SetLight(on_off_to_bool(cmd.arg(0)));
+            //     strcat(output, "OK");
+            //     break;
+            // }
+            // case GetLevel:
+            // {
+            //     PresetLevels levels = handler->GetLevels();
+            //     strcat(output, itoa(levels.low, scratch_buffer, 10));
+            //     strcat(output, ",");
+            //     strcat(output, itoa(levels.med, scratch_buffer, 10));
+            //     strcat(output, ",");
+            //     strcat(output, itoa(levels.high, scratch_buffer, 10));
+            //     break;
+            // }
+            // case SetLevel:
+            // {
+            //     handler->SetLevel(atoi(cmd.arg(0)), atoi(cmd.arg(1)));
+            //     strcat(output, "OK");
+            //     break;
+            // }
             }
 
             strcat(output, ";");
