@@ -1,0 +1,92 @@
+%{
+#include <Arduino.h>
+
+    enum CommandKind
+    {
+        DeviceType,
+        Battery,
+        PowerOff,
+        Status,
+        Vibrate,
+        GetAutoSwitch,
+        AutoSwitch,
+        GetLight,
+        Light,
+        ALight,
+        GetALight,
+        GetLevel,
+        SetLevel,
+        RotateChange,
+        Rotate,
+        Air,
+        GetBatch,        
+        Unknown
+    };
+
+    const char* command_kind_to_s(CommandKind kind) {
+        switch (kind) {
+            case DeviceType:
+                return "DeviceType";
+            case Battery:
+                return "Battery";
+            case PowerOff:
+                return "PowerOff";
+            case Status:
+                return "Status";
+            case Vibrate:
+                return "Vibrate";
+            case GetAutoSwitch:
+                return "GetAutoSwitch";
+            case AutoSwitch:
+                return "AutoSwitch";
+            case GetLight:
+                return "GetLight";
+            case Light:
+                return "Light";
+            case ALight:
+                return "ALight";
+            case GetALight:
+                return "GetAlight";
+            case GetLevel:
+                return "GetLevel";
+            case SetLevel:
+                return "SetLevel";
+            case RotateChange:
+                return "RotateChange";
+            case Rotate:
+                return "Rotate";
+            case Air:
+                return "Air";
+            case GetBatch:
+                return "GetBatch";
+            default:
+                return "Unknown";
+        }
+    }
+%}
+%language=C++
+%7bit
+%readonly-tables
+%switch=1
+%define class-name CommandHash
+%define constants-prefix COMMANDHASH_
+struct ParsedCommandType { char *name; CommandKind kind; };
+
+%%
+DeviceType, DeviceType
+Battery, Battery
+PowerOff, PowerOff
+Status, Status
+Vibrate, Vibrate
+GetAutoSwitch, GetAutoSwitch
+AutoSwith, AutoSwitch
+GetLight, GetLight
+Light, Light
+ALight, ALight
+GetAlight, GetALight
+GetLevel, GetLevel
+SetLevel, SetLevel
+RotateChange, RotateChange
+Rotate, Rotate
+Air, Air
+GetBatch, GetBatch
